@@ -56,7 +56,10 @@ export function createCombinationalAnalysisPrompt(scope = globalScope) {
                             }
                         }
                     }
+                    // char array in inc order of all input variables
                     booleanInputVariables.sort();
+
+                    
                     
                     if (inputList.length > 0 && outputList.length > 0 && booleanInputVariables.length == 0) {
                         $(this).dialog('close');
@@ -90,7 +93,7 @@ export function createCombinationalAnalysisPrompt(scope = globalScope) {
  * @param {Scope=} scope - h circuit
  * @category combinationalAnalysis
  */
-function createBooleanPrompt(inputListNames, outputListNames, output, scope = globalScope) {
+function    createBooleanPrompt(inputListNames, outputListNames, output, scope = globalScope) {
     var inputListNames = inputListNames || (prompt('Enter inputs separated by commas').split(','));
     var outputListNames = outputListNames || (prompt('Enter outputs separated by commas').split(','));
     var outputListNamesInteger = [];
@@ -148,6 +151,7 @@ function createBooleanPrompt(inputListNames, outputListNames, output, scope = gl
                 text: 'Generate Circuit',
                 click() {
                     $(this).dialog('close');
+                    //for fsm case data is a 2d array of next state values.
                     var data = generateBooleanTableData(outputListNamesInteger);
                     // passing the hash values to avoid spaces being passed which is causing a problem
                     var minimizedCircuit = [];
@@ -220,7 +224,9 @@ function generateBooleanTableData(outputListNames) {
             1: [],
             0: [],
         };
+        //array of all classes having .(7i+13)
         var rows = $(`.${outputListNames[i]}`);
+        console.log(rows)
         for (let j = 0; j < rows.length; j++) {
             data[outputListNames[i]][rows[j].innerHTML].push(rows[j].id);
         }

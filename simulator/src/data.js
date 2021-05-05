@@ -6,6 +6,7 @@ import createSaveAsImgPrompt from './data/saveImage'
 import { clearProject, newProject, saveOffline, openOffline, recoverProject } from './data/project'
 import { newCircuit } from './circuit'
 import { createCombinationalAnalysisPrompt } from './combinationalAnalysis';
+import { createFsmEditorPrompt } from './fsm/fsmEditor';
 import { colorThemes } from "./themer/themer";
 import { showTourGuide } from './tutorials';
 import {createVerilogCircuit, saveVerilogCode, resetVerilogCode} from './Verilog2CV';
@@ -24,6 +25,7 @@ logixFunction.createOpenLocalPrompt = openOffline;
 logixFunction.recoverProject = recoverProject;
 logixFunction.createSubCircuitPrompt = createSubCircuitPrompt;
 logixFunction.createCombinationalAnalysisPrompt = createCombinationalAnalysisPrompt;
+logixFunction.createFsmEditorPrompt = createFsmEditorPrompt;
 logixFunction.fullViewOption = fullView;
 logixFunction.colorThemes = colorThemes;
 logixFunction.showTourGuide = showTourGuideHelper;
